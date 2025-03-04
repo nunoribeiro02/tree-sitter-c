@@ -10,14 +10,10 @@ pub export fn language() *const Language {
     return tree_sitter_c();
 }
 
-pub export fn language_c() *const Language {
-    return tree_sitter_c();
-}
-
 test "can load grammar" {
     const parser = Parser.create();
     defer parser.destroy();
-    try testing.expectEqual(parser.setLanguage(language_c()), void{});
+    try testing.expectEqual(parser.setLanguage(language()), void{});
     try testing.expectEqual(parser.getLanguage(), tree_sitter_c());
 }
 
